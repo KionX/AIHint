@@ -1,0 +1,36 @@
+name: 'AI Hint'
+description: 'Provides AI-generated hints for GitHub issues and PRs.'
+Icon: 'check-circle'
+Color: 'white'
+inputs:
+  GITHUB_TOKEN:
+    description: 'GitHub token for API access'
+    required: true
+  ISSUE_NUMBER:
+    description: 'Issue number to analyze'
+    required: true
+  AI_TOKEN:
+    description: 'Token for Google AI API'
+    required: true
+  RULES_PATH:
+    description: 'Path to the rules txt file'
+    required: false
+  SEARCH_REPO:
+    description: 'Repository to search in for related issues and PRs'
+    required: false
+  BOT_NAME:
+    description: 'Name of the bot for identification'
+    default: 'AI Hint'
+    required: false
+
+outputs:
+  comment-id:
+    description: 'ID of the created or edited comment'
+
+runs:
+  using: 'node20'
+  main: 'aiHint.js'
+
+branding:
+  icon: 'check-circle'
+  color: 'white'

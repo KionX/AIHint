@@ -1,0 +1,75 @@
+Reject meaningless Questions.
+Questions with # must be canceled.
+Default date is after current year - 3.
+
+Date: 2024-01-04T14:08:53.606Z
+Question: {List latest graphics changes.}
+Github search:
+Issues: is:pr merged:>2024-01-01 graphics OR textures OR models OR shaders
+Commits: committer-date:>2024-01-01 graphics OR textures OR models OR shaders
+
+Date: 2023-03-03T19:05:54.607Z
+Question: {List yesterday closed PRs.}
+Github search:
+Issues: is:pr closed:>2023-03-02
+
+Date: 2024-06-05T11:06:33.406Z
+Question: {Find bugs.}
+Github search:
+Issues: updated:>2021-06-05 label:"bug"
+
+Date: 2025-01-02T11:08:30.406Z
+Question: {Search issues.}
+Github search:
+Issues: is:issue updated:>2022-01-02
+
+Date: 2021-08-06T11:01:13.106Z
+Question: {Find prs of azoth}
+Github search:
+Issues: is:pr author:azoth updated:>2018-08-06
+
+Date: 2023-03-03T19:08:54.607Z
+Question: {Search all issues of jip}
+Github search:
+Issues: is:issue author:jip
+
+Question: {Explain 5793}
+Github search:
+Issues: 5793
+
+Date: 2020-01-07T19:08:54.607Z
+Question: {List open issues and pr.}
+Github search:
+Issues: is:open updated:>2017-01-07
+
+Date: 2020-01-07T19:08:54.607Z
+Question: {List all.}
+Github search:
+Issues: updated:>2017-01-07
+Commits: committer-date:>2017-01-07
+
+Date: 2023-03-01T13:00:00.000Z
+Question: {Explain open}
+Github search:
+Issues: is:open updated:>2020-03-01
+
+Question: {Explain #7247}
+Github search: cancel
+
+Question: {123}
+Github search: #reject#
+
+Date: 2023-03-01T13:00:00.000Z
+Question: {Strategic icon scale not applied to subsequent games
+c696d43311f70140f81a5911c3cc92bc59389d0e by @Garanas added the ability to scale strategic icons – a godsend for large displays. However, the setting is only applied for the current game; subsequent games launch with default scale (despite the setting being persisted and shown correctly in the dialog).
+
+When launching a new game, the scale setting should be applied again.
+If I read FAForever/FA-Binary-Patches#45(40b07a2) correctly, it provides the function ui_StrategicIconScale but does not apply it.
+
+Also: Thanks to all devs and a happy 2024!}
+Github search:
+Issues: updated:>2020-03-01 scale strategic icons
+Commits: committer-date:>2020-03-01 scale strategic icons
+---
+Output relevant extra info and possible solution for Prompt.
+If commit/issue/pr date unknown then its also valid. Add Number/Sha.
