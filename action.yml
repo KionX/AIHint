@@ -1,7 +1,5 @@
 name: 'AI Hint'
 description: 'Provides AI-generated hints for GitHub issues and PRs.'
-Icon: 'check-circle'
-Color: 'white'
 inputs:
   GITHUB_TOKEN:
     description: 'GitHub token for API access'
@@ -12,6 +10,10 @@ inputs:
   AI_TOKEN:
     description: 'Token for Google AI API'
     required: true
+  AI_MODEL:
+    description: 'AI model name'
+    default: 'models/gemini-pro'
+    required: false
   RULES_PATH:
     description: 'Path to the rules txt file'
     required: false

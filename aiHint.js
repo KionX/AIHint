@@ -1,6 +1,6 @@
 'use strict';
 const fs = require('fs');
-const modelAI = 'models/gemini-pro';
+const modelAI = process.env.AI_MODEL || 'models/gemini-pro';
 const aiUrl = 'https://generativelanguage.googleapis.com/v1beta/';
 const ghUrl = process.env.GITHUB_API_URL;
 const aiApiKey = process.env.AI_TOKEN;
@@ -129,8 +129,8 @@ const getLabels = async (repo) => {
 
 const extractLinks = (str, repo) => {
   const getIssue = async (i) => {
-    const url = `${ghUrl}/repos/${(i[1] || repo)}/`;
-    const r = await getURL(url + `issues/${i[2]}`, ghApiKey, true);
+    const url = `${ghUrl}/repos/${(i[2] || repo)}/`;
+    const r = await getURL(url + `issues/${i[4]}`, ghApiKey, true);
     if (r.id)
       return await fetchIssue(r);
     return '';
@@ -144,9 +144,9 @@ const extractLinks = (str, repo) => {
   }
 
   const promises = {};
-  let regex = /([\w-]+\/[\w-]+)*#(\d+)/gs;
+  let regex = /(\S*\/)*([\w-]+\/[\w-]+)*(#|\/issues\/)(\d+)/gs;
   for (const issue of str.matchAll(regex))
-    promises[issue[2]] = getIssue(issue);
+    promises[issue[4]] = getIssue(issue);
 
   regex = /[A-Fa-f0-9]{6,}/gs;
   for (const commit of str.matchAll(regex))
@@ -187,6 +187,8 @@ const editIssueComment = async (apiKey, repo, commentId, text) => {
 }
 
 const getRules = async (apiKey, rPath) => {
+  if (rPath && rPath.startsWith('./'))
+    return fs.readFileSync(rPath, 'utf8');
   let url = 'https://raw.githubusercontent.com/';
   if (rPath)
     url += `${process.env.GITHUB_REPOSITORY}/${process.env.GITHUB_REF_NAME}/${rPath}`; else

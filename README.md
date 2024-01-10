@@ -14,6 +14,7 @@ Designed to automate interactions with issues and commits in your repository usi
   - ISSUE_NUMBER
   - AI_TOKEN(ai.google.dev)
 - Optiontal:
+  - AI_MODEL(default: models/gemini-pro)
   - RULES_PATH(default: local Rules.txt)
   - SEARCH_REPO(default: caller)
   - BOT_NAME(default: AI Hint)
@@ -29,7 +30,7 @@ jobs:
   respond:
     runs-on: ubuntu-latest
     steps:
-      - uses: KionX/AIHint@v1.0
+      - uses: KionX/AIHint@v1
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
           ISSUE_NUMBER: ${{github.event.issue.number}}
@@ -38,3 +39,7 @@ jobs:
           SEARCH_REPO: FAForever/fa
           BOT_NAME: AI Hint
 ```
+
+# License
+- When modifying, specify the origin/source author/repository.
+- Author of original have the right to use all found by him modifications at him discretion.

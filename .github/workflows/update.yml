@@ -1,0 +1,21 @@
+name: Update
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version e.g.: 1'
+        required: true
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Update release
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          TAG: v${{github.event.inputs.version}}
+        shell: bash
+        run: |
+          git tag "$TAG"
+          git push -f --tags
